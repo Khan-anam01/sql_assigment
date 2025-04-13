@@ -1,0 +1,248 @@
+<svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+  <!-- Styles -->
+  <style>
+    .entity { fill: #e1f5fe; stroke: #0277bd; stroke-width: 2; }
+    .junction { fill: #fff8e1; stroke: #ff8f00; stroke-width: 2; }
+    .lookup { fill: #f1f8e9; stroke: #558b2f; stroke-width: 2; }
+    .title { font-family: Arial; font-size: 16px; font-weight: bold; text-anchor: middle; }
+    .attribute { font-family: Arial; font-size: 12px; }
+    .pk { font-weight: bold; text-decoration: underline; }
+    .fk { font-style: italic; }
+    .connector { stroke: #546e7a; stroke-width: 2; fill: none; }
+    .arrow { fill: #546e7a; }
+    .label { font-family: Arial; font-size: 12px; font-style: italic; }
+    .cardinality { font-family: Arial; font-size: 14px; font-weight: bold; }
+  </style>
+
+  <!-- Book Entity -->
+  <rect x="100" y="100" width="180" height="170" rx="5" class="entity" />
+  <text x="190" y="125" class="title">Book</text>
+  <line x1="100" y1="135" x2="280" y2="135" stroke="#0277bd" stroke-width="1" />
+  <text x="110" y="155" class="attribute pk">book_id</text>
+  <text x="110" y="175" class="attribute">isbn</text>
+  <text x="110" y="195" class="attribute">title</text>
+  <text x="110" y="215" class="attribute">price</text>
+  <text x="110" y="235" class="attribute fk">publisher_id</text>
+  <text x="110" y="255" class="attribute fk">language_id</text>
+
+  <!-- Author Entity -->
+  <rect x="100" y="350" width="180" height="120" rx="5" class="entity" />
+  <text x="190" y="375" class="title">Author</text>
+  <line x1="100" y1="385" x2="280" y2="385" stroke="#0277bd" stroke-width="1" />
+  <text x="110" y="405" class="attribute pk">author_id</text>
+  <text x="110" y="425" class="attribute">first_name</text>
+  <text x="110" y="445" class="attribute">last_name</text>
+  <text x="110" y="465" class="attribute">biography</text>
+
+  <!-- Book-Author Junction -->
+  <rect x="400" y="225" width="180" height="100" rx="5" class="junction" />
+  <text x="490" y="250" class="title">Book_Author</text>
+  <line x1="400" y1="260" x2="580" y2="260" stroke="#ff8f00" stroke-width="1" />
+  <text x="410" y="280" class="attribute pk fk">book_id</text>
+  <text x="410" y="300" class="attribute pk fk">author_id</text>
+  <text x="410" y="320" class="attribute">author_order</text>
+
+  <!-- Book Language Lookup -->
+  <rect x="100" y="550" width="180" height="80" rx="5" class="lookup" />
+  <text x="190" y="575" class="title">Book_Language</text>
+  <line x1="100" y1="585" x2="280" y2="585" stroke="#558b2f" stroke-width="1" />
+  <text x="110" y="605" class="attribute pk">language_id</text>
+  <text x="110" y="625" class="attribute">language_name</text>
+
+  <!-- Publisher Entity -->
+  <rect x="400" y="100" width="180" height="100" rx="5" class="entity" />
+  <text x="490" y="125" class="title">Publisher</text>
+  <line x1="400" y1="135" x2="580" y2="135" stroke="#0277bd" stroke-width="1" />
+  <text x="410" y="155" class="attribute pk">publisher_id</text>
+  <text x="410" y="175" class="attribute">name</text>
+  <text x="410" y="195" class="attribute">address</text>
+
+  <!-- Customer Entity -->
+  <rect x="700" y="100" width="180" height="150" rx="5" class="entity" />
+  <text x="790" y="125" class="title">Customer</text>
+  <line x1="700" y1="135" x2="880" y2="135" stroke="#0277bd" stroke-width="1" />
+  <text x="710" y="155" class="attribute pk">customer_id</text>
+  <text x="710" y="175" class="attribute">first_name</text>
+  <text x="710" y="195" class="attribute">last_name</text>
+  <text x="710" y="215" class="attribute">email</text>
+  <text x="710" y="235" class="attribute">phone</text>
+
+  <!-- Address Entity -->
+  <rect x="700" y="350" width="180" height="150" rx="5" class="entity" />
+  <text x="790" y="375" class="title">Address</text>
+  <line x1="700" y1="385" x2="880" y2="385" stroke="#0277bd" stroke-width="1" />
+  <text x="710" y="405" class="attribute pk">address_id</text>
+  <text x="710" y="425" class="attribute">street</text>
+  <text x="710" y="445" class="attribute">city</text>
+  <text x="710" y="465" class="attribute">state</text>
+  <text x="710" y="485" class="attribute fk">country_id</text>
+
+  <!-- Customer Address Junction -->
+  <rect x="700" y="550" width="180" height="100" rx="5" class="junction" />
+  <text x="790" y="575" class="title">Customer_Address</text>
+  <line x1="700" y1="585" x2="880" y2="585" stroke="#ff8f00" stroke-width="1" />
+  <text x="710" y="605" class="attribute pk fk">customer_id</text>
+  <text x="710" y="625" class="attribute pk fk">address_id</text>
+  <text x="710" y="645" class="attribute fk">status_id</text>
+
+  <!-- Address Status Lookup -->
+  <rect x="400" y="550" width="180" height="80" rx="5" class="lookup" />
+  <text x="490" y="575" class="title">Address_Status</text>
+  <line x1="400" y1="585" x2="580" y2="585" stroke="#558b2f" stroke-width="1" />
+  <text x="410" y="605" class="attribute pk">status_id</text>
+  <text x="410" y="625" class="attribute">status_name</text>
+
+  <!-- Country Lookup -->
+  <rect x="400" y="350" width="180" height="80" rx="5" class="lookup" />
+  <text x="490" y="375" class="title">Country</text>
+  <line x1="400" y1="385" x2="580" y2="385" stroke="#558b2f" stroke-width="1" />
+  <text x="410" y="405" class="attribute pk">country_id</text>
+  <text x="410" y="425" class="attribute">country_name</text>
+
+  <!-- Order Entity -->
+  <rect x="950" y="100" width="180" height="170" rx="5" class="entity" />
+  <text x="1040" y="125" class="title">Cust_Order</text>
+  <line x1="950" y1="135" x2="1130" y2="135" stroke="#0277bd" stroke-width="1" />
+  <text x="960" y="155" class="attribute pk">order_id</text>
+  <text x="960" y="175" class="attribute fk">customer_id</text>
+  <text x="960" y="195" class="attribute">order_date</text>
+  <text x="960" y="215" class="attribute fk">shipping_method_id</text>
+  <text x="960" y="235" class="attribute fk">shipping_address_id</text>
+  <text x="960" y="255" class="attribute">order_total</text>
+
+  <!-- Order Line Entity -->
+  <rect x="950" y="350" width="180" height="120" rx="5" class="entity" />
+  <text x="1040" y="375" class="title">Order_Line</text>
+  <line x1="950" y1="385" x2="1130" y2="385" stroke="#0277bd" stroke-width="1" />
+  <text x="960" y="405" class="attribute pk">line_id</text>
+  <text x="960" y="425" class="attribute fk">order_id</text>
+  <text x="960" y="445" class="attribute fk">book_id</text>
+  <text x="960" y="465" class="attribute">quantity</text>
+
+  <!-- Shipping Method Lookup -->
+  <rect x="950" y="550" width="180" height="80" rx="5" class="lookup" />
+  <text x="1040" y="575" class="title">Shipping_Method</text>
+  <line x1="950" y1="585" x2="1130" y2="585" stroke="#558b2f" stroke-width="1" />
+  <text x="960" y="605" class="attribute pk">method_id</text>
+  <text x="960" y="625" class="attribute">method_name</text>
+
+  <!-- Order Status Lookup -->
+  <rect x="700" y="700" width="180" height="80" rx="5" class="lookup" />
+  <text x="790" y="725" class="title">Order_Status</text>
+  <line x1="700" y1="735" x2="880" y2="735" stroke="#558b2f" stroke-width="1" />
+  <text x="710" y="755" class="attribute pk">status_id</text>
+  <text x="710" y="775" class="attribute">status_name</text>
+
+  <!-- Order History Entity -->
+  <rect x="950" y="700" width="180" height="120" rx="5" class="entity" />
+  <text x="1040" y="725" class="title">Order_History</text>
+  <line x1="950" y1="735" x2="1130" y2="735" stroke="#0277bd" stroke-width="1" />
+  <text x="960" y="755" class="attribute pk">history_id</text>
+  <text x="960" y="775" class="attribute fk">order_id</text>
+  <text x="960" y="795" class="attribute fk">status_id</text>
+  <text x="960" y="815" class="attribute">status_date</text>
+
+  <!-- Relationships -->
+  <!-- Book to Publisher -->
+  <path d="M 280 185 L 390 185" class="connector" />
+  <polygon points="390,185 380,190 380,180" class="arrow" />
+  <text x="330" y="175" class="cardinality">1</text>
+  <text x="290" y="175" class="cardinality">*</text>
+
+  <!-- Book to Book_Language -->
+  <path d="M 190 270 L 190 540" class="connector" />
+  <polygon points="190,540 185,530 195,530" class="arrow" />
+  <text x="180" y="520" class="cardinality">1</text>
+  <text x="180" y="280" class="cardinality">*</text>
+
+  <!-- Book to Book_Author -->
+  <path d="M 280 185 L 340 185 L 340 275 L 390 275" class="connector" />
+  <polygon points="390,275 380,280 380,270" class="arrow" />
+  <text x="380" y="265" class="cardinality">*</text>
+  <text x="290" y="175" class="cardinality">1</text>
+
+  <!-- Author to Book_Author -->
+  <path d="M 280 410 L 340 410 L 340 310 L 390 310" class="connector" />
+  <polygon points="390,310 380,315 380,305" class="arrow" />
+  <text x="380" y="300" class="cardinality">*</text>
+  <text x="290" y="400" class="cardinality">1</text>
+
+  <!-- Address to Country -->
+  <path d="M 700 435 L 590 435" class="connector" />
+  <polygon points="590,435 600,430 600,440" class="arrow" />
+  <text x="600" y="425" class="cardinality">1</text>
+  <text x="690" y="425" class="cardinality">*</text>
+
+  <!-- Customer to Customer_Address -->
+  <path d="M 790 250 L 790 540" class="connector" />
+  <polygon points="790,540 785,530 795,530" class="arrow" />
+  <text x="780" y="530" class="cardinality">*</text>
+  <text x="780" y="260" class="cardinality">1</text>
+
+  <!-- Address to Customer_Address -->
+  <path d="M 790 500 L 790 540" class="connector" />
+  <polygon points="790,540 785,530 795,530" class="arrow" />
+  <text x="800" y="530" class="cardinality">*</text>
+  <text x="800" y="510" class="cardinality">1</text>
+
+  <!-- Address_Status to Customer_Address -->
+  <path d="M 580 620 L 690 620" class="connector" />
+  <polygon points="690,620 680,625 680,615" class="arrow" />
+  <text x="680" y="610" class="cardinality">*</text>
+  <text x="590" y="610" class="cardinality">1</text>
+
+  <!-- Customer to Cust_Order -->
+  <path d="M 880 175 L 940 175" class="connector" />
+  <polygon points="940,175 930,180 930,170" class="arrow" />
+  <text x="930" y="165" class="cardinality">*</text>
+  <text x="890" y="165" class="cardinality">1</text>
+
+  <!-- Address to Cust_Order -->
+  <path d="M 880 410 L 910 410 L 910 235 L 940 235" class="connector" />
+  <polygon points="940,235 930,240 930,230" class="arrow" />
+  <text x="930" y="225" class="cardinality">*</text>
+  <text x="890" y="400" class="cardinality">1</text>
+
+  <!-- Shipping_Method to Cust_Order -->
+  <path d="M 1040 550 L 1040 270" class="connector" />
+  <polygon points="1040,270 1045,280 1035,280" class="arrow" />
+  <text x="1030" y="280" class="cardinality">*</text>
+  <text x="1030" y="540" class="cardinality">1</text>
+
+  <!-- Cust_Order to Order_Line -->
+  <path d="M 1040 270 L 1040 340" class="connector" />
+  <polygon points="1040,340 1035,330 1045,330" class="arrow" />
+  <text x="1050" y="330" class="cardinality">*</text>
+  <text x="1050" y="280" class="cardinality">1</text>
+
+  <!-- Book to Order_Line -->
+  <path d="M 190 270 L 190 650 L 880 650 L 880 465 L 940 465" class="connector" />
+  <polygon points="940,465 930,470 930,460" class="arrow" />
+  <text x="930" y="455" class="cardinality">*</text>
+  <text x="200" y="280" class="cardinality">1</text>
+
+  <!-- Cust_Order to Order_History -->
+  <path d="M 1040 270 L 1040 690" class="connector" />
+  <polygon points="1040,690 1035,680 1045,680" class="arrow" />
+  <text x="1050" y="680" class="cardinality">*</text>
+  <text x="1050" y="280" class="cardinality">1</text>
+
+  <!-- Order_Status to Order_History -->
+  <path d="M 880 755 L 940 755" class="connector" />
+  <polygon points="940,755 930,760 930,750" class="arrow" />
+  <text x="930" y="745" class="cardinality">*</text>
+  <text x="890" y="745" class="cardinality">1</text>
+
+  <!-- Legend -->
+  <rect x="100" y="800" width="120" height="30" rx="5" class="entity" />
+  <text x="160" y="820" class="title">Entity</text>
+  
+  <rect x="250" y="800" width="120" height="30" rx="5" class="junction" />
+  <text x="310" y="820" class="title">Junction</text>
+  
+  <rect x="400" y="800" width="120" height="30" rx="5" class="lookup" />
+  <text x="460" y="820" class="title">Lookup</text>
+  
+  <text x="550" y="820" class="attribute pk">Primary Key</text>
+  <text x="650" y="820" class="attribute fk">Foreign Key</text>
+</svg>
